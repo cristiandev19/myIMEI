@@ -30,13 +30,19 @@ export const HeaderHome = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            News
+            MyIMEI
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button edge="end" color="inherit">
+            {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton> */}
+            Cristian Sotomayor
+          </Button>
+          <Button edge="end" color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
