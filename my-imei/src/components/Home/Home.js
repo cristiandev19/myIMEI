@@ -9,6 +9,10 @@ export const Home = () => {
             Hola home
 
             <CardIMEI />
+            <CardIMEI />
+            <CardIMEI />
+            <CardIMEI />
+            <CardIMEI />
         </div>
     )
 }
