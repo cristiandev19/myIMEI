@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   buscador: {
-    width: '75%',
+    width: '70%',
     margin: 'auto'
   },
   main: {
@@ -43,7 +43,7 @@ export const Home = () => {
         </form>
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
-            <Grid container justify="center" spacing={spacing}>
+            <Grid container  item xs={12} justify="center" spacing={spacing}>
               {array_card.map((value) => (
 
                 <Grid key={value} item>
