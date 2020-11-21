@@ -1,4 +1,5 @@
 import React from 'react'
+import { CardIMEI } from '../CardIMEI/CardIMEI'
 import { HeaderHome } from '../HeaderHome/HeaderHome'
 
 export const Home = () => {
@@ -6,6 +7,8 @@ export const Home = () => {
         <div>
             <HeaderHome />
             Hola home
+
+            <CardIMEI />
         </div>
     )
 }
