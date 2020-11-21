@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
+import { Menu, MenuItem } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,16 @@ const useStyles = makeStyles((theme) => ({
 export const HeaderHome = () => {
   const classes = useStyles();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -42,7 +53,22 @@ export const HeaderHome = () => {
             </IconButton> */}
             Cristian Sotomayor
           </Button>
-          <Button edge="end" color="inherit">Login</Button>
+
+          {/* <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+            Open Menu
+          </Button> */}
+          {/* <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu> */}
+          <Button edge="end" color="inherit">Cerrar sesion</Button>
         </Toolbar>
       </AppBar>
     </div>
