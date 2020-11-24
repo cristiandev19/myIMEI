@@ -1,11 +1,19 @@
-import { Button } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
 
 
-// window.location.origin + '/phone_photo.jpg'
-// src={window.location.origin + '/phone_photo.jpg'}
+const useStyles = makeStyles((theme) => ({
+  buttons: {
+    width: '200px',
+    marginTop: '5px',
+    marginBottom: '5px'
+  }
+}));
+
 
 export const HandleAuth = () => {
+  const classes = useStyles();
+
   return (
     <div className="main-container">
       <div className="main-container__screen">
@@ -19,8 +27,8 @@ export const HandleAuth = () => {
         <p>
           hola estas en HandleAuth
         </p>
-        <Button variant="contained" size="large" color="primary"> Iniciar sesion</Button>
-        <Button variant="contained" size="large" color="secondary"> Registrarse</Button>
+        <Button variant="contained" className={classes.buttons} size="large" color="primary"> Iniciar sesion</Button>
+        <Button variant="contained" className={classes.buttons} size="large" color="secondary"> Registrarse</Button>
       </div>
     </div>
   )
