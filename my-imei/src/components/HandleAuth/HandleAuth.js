@@ -36,9 +36,23 @@ export const HandleAuth = () => {
     setOpenRegister(false);
   };
 
-  const handleChange = () => {
+  const handleChange = (event) => {
+    console.log("🚀 ~ file: HandleAuth.js ~ line 43 ~ handleChange ~ event", event)
     console.log('holaaaaaaaaa')
-    setNumPadre(2);
+    if(event == 'mas') {
+      setNumPadre(numPadre + 1);
+    } else if (event == 'menos') {
+      setNumPadre(numPadre - 1);
+    }
+  }
+
+  const handleActionsLogin = ({ type, payload }) => {
+    console.log("🚀 ~ file: HandleAuth.js ~ line 52 ~ handleActionsLogin ~ { type, payload }", { type, payload })
+    if(type === 'close') {
+      setOpenLogin(false);
+    } else if(type === 'open') {
+      setOpenLogin(true);
+    }
   }
 
   return (
@@ -68,38 +82,7 @@ export const HandleAuth = () => {
           color="secondary"
         > Registrarse</Button>
 
-      <Hijo numPadre={numPadre} change={ handleChange } />
-      {/* <LoginModal open={} /> */}
-{/* 
-        <Dialog open={openLogin} onClose={handleCloseLogin} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Ingresa a ver tus IMEIS</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="email"
-              label="Email"
-              type="email"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="password"
-              label="Contraseña"
-              type="password"
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleCloseLogin} color="primary" >
-              Cancelar
-            </Button>
-            <Button onClick={handleCloseLogin} color="primary" variant="outlined">
-              Ingresar
-            </Button>
-          </DialogActions>
-        </Dialog> */}
+      <LoginModal openLogin={openLogin} actionsLogin={ handleActionsLogin } />
 
       </div>
     </div>
