@@ -1,7 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, makeStyles, TextField } from '@material-ui/core'
 import React from 'react'
 import { LoginModal } from '../LoginModal/LoginModal';
-import { Hijo } from '../Hijo';
 
 
 const useStyles = makeStyles((theme) => ({
