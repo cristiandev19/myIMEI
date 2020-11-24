@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, makeStyles, TextField } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
 import { LoginModal } from '../LoginModal/LoginModal';
 
@@ -35,15 +35,7 @@ export const HandleAuth = () => {
     setOpenRegister(false);
   };
 
-  const handleChange = (event) => {
-    console.log("🚀 ~ file: HandleAuth.js ~ line 43 ~ handleChange ~ event", event)
-    console.log('holaaaaaaaaa')
-    if(event == 'mas') {
-      setNumPadre(numPadre + 1);
-    } else if (event == 'menos') {
-      setNumPadre(numPadre - 1);
-    }
-  }
+
 
   const handleActionsLogin = ({ type, payload }) => {
     console.log("🚀 ~ file: HandleAuth.js ~ line 52 ~ handleActionsLogin ~ { type, payload }", { type, payload })
