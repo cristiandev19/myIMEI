@@ -1,6 +1,7 @@
 import { Button, makeStyles } from '@material-ui/core'
 import React from 'react'
 import { LoginModal } from '../LoginModal/LoginModal';
+import { RegisterModal } from '../RegisterModal/RegisterModal';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,26 +24,42 @@ export const HandleAuth = () => {
     setOpenLogin(true);
   };
 
-  const handleCloseLogin = () => {
-    setOpenLogin(false);
-  };
 
   const handleClickOpenRegister = () => {
     setOpenRegister(true);
   };
 
-  const handleCloseRegister = () => {
-    setOpenRegister(false);
-  };
 
 
 
   const handleActionsLogin = ({ type, payload }) => {
     console.log("🚀 ~ file: HandleAuth.js ~ line 52 ~ handleActionsLogin ~ { type, payload }", { type, payload })
-    if(type === 'close') {
-      setOpenLogin(false);
-    } else if(type === 'open') {
-      setOpenLogin(true);
+    switch (type) {
+      case 'close':
+        setOpenLogin(false);
+        break;
+
+      case 'open':
+        setOpenLogin(true);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  const handleActionsRegister = ({ type, payload }) => {
+    switch (type) {
+      case 'close':
+        setOpenRegister(false);
+        break;
+
+      case 'open':
+        setOpenRegister(true);
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -71,9 +88,17 @@ export const HandleAuth = () => {
           className={classes.buttons}
           size="large"
           color="secondary"
+          onClick={handleClickOpenRegister}
         > Registrarse</Button>
 
-      <LoginModal openLogin={openLogin} actionsLogin={ handleActionsLogin } />
+      <LoginModal
+        openLogin={ openLogin }
+        actionsLogin={ handleActionsLogin }
+      />
+      <RegisterModal
+        openRegister={ openRegister }
+        actionsRegister={ handleActionsRegister }
+      />
 
       </div>
     </div>
