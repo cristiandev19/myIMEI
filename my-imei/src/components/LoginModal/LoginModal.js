@@ -1,18 +1,12 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 
-export const LoginModal = ({openLogin, actionsLogin }) => {
+export const LoginModal = ({ openLogin, actionsLogin }) => {
 
-  // const [openLogin, setOpenLogin] = React.useState(false);
-  // const [openRegister, setOpenRegister] = React.useState(false);
-
-  // const handleClickOpenLogin = () => {
-  //   setOpenLogin(true);
-  // };
-
-  // const handleCloseLogin = () => {
-  //   setOpenLogin(false);
-  // };
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: ''
+  })
 
   const handleCloseLogin = () => {
     actionsLogin({
@@ -21,42 +15,59 @@ export const LoginModal = ({openLogin, actionsLogin }) => {
     })
   }
 
+  const handleChangeForm = ({ target }) => {
+    const { name, value } = target;
+    setLoginForm({
+      ...loginForm,
+      [name] : value
+    });
+  }
+
+  const handleCLickLogin = () => {
+    console.log('aqui estaria el login vereoms el loginform -> ', loginForm)
+  }
+
   return (
     <>
-      
+
       <Dialog open={openLogin} onClose={handleCloseLogin} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Ingresa a ver tus IMEIS</DialogTitle>
-          <DialogContent>
-            {/* <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send updates
-              occasionally.
-            </DialogContentText> */}
-            <TextField
-              autoFocus
-              margin="dense"
-              id="email"
-              label="Email"
-              type="email"
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="password"
-              label="Contraseña"
-              type="password"
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleCloseLogin} color="primary" >
-              Cancelar
-            </Button>
-            <Button onClick={handleCloseLogin} color="primary" variant="outlined">
-              Ingresar
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <DialogTitle id="form-dialog-title">Ingresa a ver tus IMEIS</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>
+            To subscribe to this website, please enter your email address here. We will send updates
+            occasionally.
+          </DialogContentText> */}
+          <TextField
+            autoFocus
+            margin="dense"
+            id="email"
+            name="email"
+            label="Email"
+            type="email"
+            fullWidth
+            onChange={ handleChangeForm }
+            value={ loginForm.email }
+          />
+          <TextField
+            margin="dense"
+            id="password"
+            name="password"
+            label="Contraseña"
+            type="password"
+            fullWidth
+            onChange={ handleChangeForm }
+            value={ loginForm.password }
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseLogin} color="primary" >
+            Cancelar
+          </Button>
+          <Button onClick={handleCLickLogin} color="primary" variant="outlined">
+            Ingresar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
