@@ -47,9 +47,9 @@ console.log("🚀 ~ file: HandleAuth.js ~ line 107 ~ HandleAuth ~ history", hist
 
       case 'login':
         const { formData } = payload;
-        console.log("🚀 ~ file: HandleAuth.js ~ line 65 ~ handleActionsRegister ~ formData", formData)
         history.replace('/home')
         break;
+
       default:
         break;
     }
