@@ -14,7 +14,10 @@ export const AppRouter = () => {
       <>
         <Switch>
           <Route exact path="/auth" component={ HandleAuth } />
-          <Route path="/home" component={ Home } />
+          <Route exact path="/home" component={ Home } />
+
+          <Route exact component={ Home } />
+
         </Switch>
       </>
     </Router>
