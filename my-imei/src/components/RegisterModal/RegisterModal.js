@@ -24,13 +24,22 @@ export const RegisterModal = ({ openRegister, actionsRegister }) => {
     });
   }
 
-  console.log('holaaaaaaaaaaaaaaaaaaaaaa')
   const handleCloseRegister = () => {
     actionsRegister({
       type: 'close',
       payload: {}
     })
   }
+
+  const handleCLickRegister = () => {
+    actionsRegister({
+      type: 'register',
+      payload: {
+        formData: registerForm
+      }
+    })
+  }
+
   return (
     <>
       <Dialog open={openRegister} onClose={handleCloseRegister} aria-labelledby="form-dialog-title">
@@ -70,7 +79,7 @@ export const RegisterModal = ({ openRegister, actionsRegister }) => {
           <Button onClick={handleCloseRegister} color="primary" >
             Cancelar
           </Button>
-          <Button onClick={handleCloseRegister} color="primary" variant="outlined">
+          <Button onClick={handleCLickRegister} color="primary" variant="outlined">
             Ingresar
           </Button>
         </DialogActions>

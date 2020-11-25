@@ -1,4 +1,11 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField
+} from '@material-ui/core'
 import React, { useState } from 'react'
 
 export const LoginModal = ({ openLogin, actionsLogin }) => {
@@ -8,13 +15,6 @@ export const LoginModal = ({ openLogin, actionsLogin }) => {
     password: ''
   })
 
-  const handleCloseLogin = () => {
-    actionsLogin({
-      type: 'close',
-      payload: {}
-    })
-  }
-
   const handleChangeForm = ({ target }) => {
     const { name, value } = target;
     setLoginForm({
@@ -23,8 +23,21 @@ export const LoginModal = ({ openLogin, actionsLogin }) => {
     });
   }
 
+  const handleCloseLogin = () => {
+    actionsLogin({
+      type: 'close',
+      payload: {}
+    })
+  }
+
   const handleCLickLogin = () => {
-    console.log('aqui estaria el login vereoms el loginform -> ', loginForm)
+    actionsLogin({
+      type: 'login',
+      payload: {
+        formData: loginForm
+      }
+    })
+
   }
 
   return (

@@ -1,5 +1,6 @@
 import { Button, makeStyles } from '@material-ui/core'
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../auth/AuthContext';
 import { LoginModal } from '../LoginModal/LoginModal';
 import { RegisterModal } from '../RegisterModal/RegisterModal';
 
@@ -14,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const HandleAuth = ({ history }) => {
-console.log("🚀 ~ file: HandleAuth.js ~ line 107 ~ HandleAuth ~ history", history)
+
+  const { setUser } = useContext(AuthContext);
 
   const classes = useStyles();
-  const [numPadre, setNumPadre] = React.useState(0);
 
   const [openLogin, setOpenLogin] = React.useState(false);
   const [openRegister, setOpenRegister] = React.useState(false);
@@ -47,6 +48,12 @@ console.log("🚀 ~ file: HandleAuth.js ~ line 107 ~ HandleAuth ~ history", hist
 
       case 'login':
         const { formData } = payload;
+
+        const userData = {
+          ...formData,
+          name: 'Cristian'
+        }
+        setUser(userData);
         history.replace('/home')
         break;
 
@@ -65,9 +72,11 @@ console.log("🚀 ~ file: HandleAuth.js ~ line 107 ~ HandleAuth ~ history", hist
         setOpenRegister(true);
         break;
 
-      case 'login':
+      case 'register':
         const { formData } = payload;
-        console.log("🚀 ~ file: HandleAuth.js ~ line 65 ~ handleActionsRegister ~ formData", formData)
+
+        setUser(formData);
+
         history.replace('/home')
         break;
 
