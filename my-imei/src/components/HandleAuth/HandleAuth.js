@@ -13,7 +13,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const HandleAuth = () => {
+export const HandleAuth = ({ history }) => {
+console.log("🚀 ~ file: HandleAuth.js ~ line 107 ~ HandleAuth ~ history", history)
+
   const classes = useStyles();
   const [numPadre, setNumPadre] = React.useState(0);
 
@@ -43,6 +45,11 @@ export const HandleAuth = () => {
         setOpenLogin(true);
         break;
 
+      case 'login':
+        const { formData } = payload;
+        console.log("🚀 ~ file: HandleAuth.js ~ line 65 ~ handleActionsRegister ~ formData", formData)
+        history.replace('/home')
+        break;
       default:
         break;
     }
@@ -56,6 +63,12 @@ export const HandleAuth = () => {
 
       case 'open':
         setOpenRegister(true);
+        break;
+
+      case 'login':
+        const { formData } = payload;
+        console.log("🚀 ~ file: HandleAuth.js ~ line 65 ~ handleActionsRegister ~ formData", formData)
+        history.replace('/home')
         break;
 
       default:
