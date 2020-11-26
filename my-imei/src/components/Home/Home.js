@@ -1,7 +1,6 @@
 import { Container, Grid, makeStyles, TextField } from '@material-ui/core'
 import React from 'react'
 import { CardIMEI } from '../CardIMEI/CardIMEI'
-import { HeaderHome } from '../HeaderHome/HeaderHome'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,10 +30,10 @@ export const Home = () => {
   let spacing = 4;
   const classes = useStyles();
 
-  let array_card = ['item_add',0, 1, 2,3, 6, 6];
+  let array_card = ['item_add',0, 1, 2,3, 66, 6];
   return (
     <div>
-      <HeaderHome />
+
       <Container fixed className={classes.main}>
         {/* Hola home */}
 
@@ -48,7 +47,7 @@ export const Home = () => {
 
                 <Grid key={value} item>
                   {/* <Paper className={classes.paper} /> */}
-                  <CardIMEI alias="hola" imei="hola" estado="hola"  type_card="value"/>
+                  <CardIMEI key={value} alias="hola" imei="hola" estado="hola"  type_card="value"/>
                 </Grid>
               ))}
             </Grid>
