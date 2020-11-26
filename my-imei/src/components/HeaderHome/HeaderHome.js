@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HeaderHome = ({ hola1 }) => {
+export const HeaderHome = () => {
 
   const classes = useStyles();
 
@@ -48,7 +48,7 @@ export const HeaderHome = ({ hola1 }) => {
     console.log('no llega')
     history.replace('/auth')
     console.log('deberia redireccionar')
-    // hola1()
+
     dispatch({
       type: types.logout
     });

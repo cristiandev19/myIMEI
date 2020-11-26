@@ -8,15 +8,10 @@ import { HeaderHome } from '../components/HeaderHome/HeaderHome';
 import { Home } from '../components/Home/Home';
 
 export const HomeRouter = ({ history }) => {
-  console.log('home router -> ', history)
 
-
-  const hola = () => {
-    history.replace('/auth')
-  } 
   return (
     <>
-      <HeaderHome hola1={ hola } />
+      <HeaderHome />
       <Switch>
         <Route  path="" component={ Home } />
 
