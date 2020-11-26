@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+import React, { useContext } from 'react'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem } from '@material-ui/core';
+import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,8 +26,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HeaderHome = () => {
+export const HeaderHome = ({ history, headerActions }) => {
+console.log("🚀 ~ file: HeaderHome.js ~ line 94 ~ HeaderHome ~ history", history)
+
   const classes = useStyles();
+
+  const { dispatch } = useContext(AuthContext);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -36,6 +42,16 @@ export const HeaderHome = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    dispatch({
+      type: types.logout
+    });
+    headerActions({
+      type: 'logout'
+    })
+    // history.replace('/auth')
+  }
 
   return (
     <div className={classes.root}>
@@ -68,7 +84,13 @@ export const HeaderHome = () => {
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu> */}
-          <Button edge="end" color="inherit">Cerrar sesion</Button>
+          <Button 
+            edge="end" 
+            color="inherit"
+            onClick={ handleLogout }
+          >
+            Cerrar sesion
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
