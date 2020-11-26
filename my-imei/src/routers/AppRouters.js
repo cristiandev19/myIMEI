@@ -7,6 +7,7 @@ import {
 import { HandleAuth } from '../components/HandleAuth/HandleAuth';
 // import { HomeRoutes } from './HomeRoutes';
 import { Home } from '../components/Home/Home';
+import { HomeRouter } from './HomeRouter';
 
 export const AppRouter = () => {
   return (
@@ -14,9 +15,9 @@ export const AppRouter = () => {
       <>
         <Switch>
           <Route exact path="/auth" component={ HandleAuth } />
-          <Route exact path="/home" component={ Home } />
+          <Route exact path="/home" component={ HomeRouter } />
 
-          <Route exact component={ Home } />
+          <Route component={ HomeRouter } />
 
         </Switch>
       </>
