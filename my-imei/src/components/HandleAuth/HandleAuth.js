@@ -1,6 +1,7 @@
 import { Button, makeStyles } from '@material-ui/core'
 import React, { useContext } from 'react'
 import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 import { LoginModal } from '../LoginModal/LoginModal';
 import { RegisterModal } from '../RegisterModal/RegisterModal';
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const HandleAuth = ({ history }) => {
 
-  const { setUser } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const classes = useStyles();
 
@@ -53,7 +54,12 @@ export const HandleAuth = ({ history }) => {
           ...formData,
           name: 'Cristian'
         }
-        setUser(userData);
+
+        dispatch({
+          type: types.login,
+          payload: userData
+        });
+
         history.replace('/home')
         break;
 
@@ -75,7 +81,10 @@ export const HandleAuth = ({ history }) => {
       case 'register':
         const { formData } = payload;
 
-        setUser(formData);
+        dispatch({
+          type: types.login,
+          payload: formData
+        });
 
         history.replace('/home')
         break;
