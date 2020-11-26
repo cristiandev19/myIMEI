@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem } from '@material-ui/core';
 import { AuthContext } from '../../auth/AuthContext';
 import { types } from '../../types/types';
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HeaderHome = ({ history, headerActions }) => {
-console.log("🚀 ~ file: HeaderHome.js ~ line 94 ~ HeaderHome ~ history", history)
+export const HeaderHome = ({ hola1 }) => {
 
   const classes = useStyles();
 
+  const history = useHistory();
   const { dispatch } = useContext(AuthContext);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,13 +45,15 @@ console.log("🚀 ~ file: HeaderHome.js ~ line 94 ~ HeaderHome ~ history", histo
   };
 
   const handleLogout = () => {
+    console.log('no llega')
+    history.replace('/auth')
+    console.log('deberia redireccionar')
+    // hola1()
     dispatch({
       type: types.logout
     });
-    headerActions({
-      type: 'logout'
-    })
-    // history.replace('/auth')
+
+    // history
   }
 
   return (
